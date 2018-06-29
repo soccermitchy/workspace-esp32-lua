@@ -213,6 +213,14 @@ You can buy the esp32 on ebay.com or aliexpress.com.`,
             console.log("got onClickHeap. evt:", evt);
             this.send('=node.heap()');
         },
+        onClickCancelBoot: function(evt) {
+            console.log('cancelling boot');
+            this.send('boot=false')
+        },
+        onClickStartSensorLua: function(evt) {
+            console.log('starting sensor.lua');
+            this.send("boot=false;dofile'sensor.lua'")
+        },
         onClickChipId: function(evt) {
             console.log("got onClickChipId. evt:", evt);
             this.send('=node.chipid()');
@@ -724,6 +732,7 @@ end)`);
                             <!--<div class="btn-group btn-group-xs" role="group">-->
                             <button type="button" class="btn btn-xs btn-default" data-click="onClickHeap">Heap</button>
                             <button type="button" class="btn btn-xs btn-default" data-click="onClickChipId">Chip ID</button>
+                            
                             <!--<button type="button" class="btn btn-xs btn-default" data-click="onClickChipInfo">Chip Info</button>-->
                             <!--<button type="button" class="btn btn-xs btn-default" data-click="onClickFlashId">Flash ID</button>-->
                             <!--</div>-->
@@ -744,6 +753,9 @@ end)`);
                             <!--<div class="btn-group btn-group-xs" role="group">-->
                             <button type="button" class="btn btn-xs btn-default" data-click="onClickListAps">List Access Points</button>
                             <!--</div>-->
+                            
+                            <button type="button" class="btn btn-xs btn-default" data-click="onClickCancelBoot">Cancel Boot</button>
+                            <button type="button" class="btn btn-xs btn-default" data-click="onClickStartSensorLua">Instant Boot</button>
                         </div>
 
                     </div>
